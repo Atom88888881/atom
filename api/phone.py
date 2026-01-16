@@ -1,24 +1,24 @@
+from http.server import BaseHTTPRequestHandler
 import json
 import requests
+import os
 
 def handler(request):
-    if request.method != 'POST':
+    if request['method'] != 'POST':
         return {
             'statusCode': 405,
             'headers': {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'POST, OPTIONS',
-                'Access-Control-Allow-Headers': 'Content-Type'
+                'Access-Control-Allow-Origin': '*'
             },
             'body': json.dumps({'error': 'Method not allowed'})
         }
     
     try:
-        data = json.loads(request.body)
-        phone = data.get('phone')
+        data = json.loads(request['body'])
+        phone = data.get('phone', '').strip()
         
-        if not phone or len(phone) != 10 or not phone.isdigit():
+        if len(phone) != 10 or not phone.isdigit():
             return {
                 'statusCode': 400,
                 'headers': {
@@ -28,14 +28,14 @@ def handler(request):
                 'body': json.dumps({'error': 'Invalid phone number'})
             }
         
+        url = "https://apitu.psnw.xyz/index.php"
         params = {
             'type': 'phone',
             'value': phone,
             'mode': 'sff'
         }
         
-        response = requests.get("https://apitu.psnw.xyz/index.php", params=params, timeout=10)
-        result = response.json()
+        response = requests.get(url, params=params, timeout=10)
         
         return {
             'statusCode': 200,
@@ -43,7 +43,7 @@ def handler(request):
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
             },
-            'body': json.dumps(result)
+            'body': response.text
         }
         
     except Exception as e:

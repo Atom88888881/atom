@@ -97,7 +97,7 @@ function search(){
     const searchBtn=document.getElementById('searchBtn')
     searchBtn.disabled=true
     searchBtn.textContent='กำลังค้นหา...'
-    fetch('/api/phone-lookup',{
+    fetch('/api/phone',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({phone:phone})
