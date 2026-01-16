@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8" />
-<title>Free</title>
+<title>ig eedok.4</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0b1220;--bg-2:#0f182a;--panel:#1b2433;--panel-2:#202b3d;--border:#2a3a55;--accent:#0b84c6;--text:#dbe6ff;--muted:#8fa2c9}
@@ -42,19 +42,19 @@ pre{background:var(--panel-2);border-radius:8px;padding:14px;height:420px;overfl
 </head>
 <body>
 <div class="topbar">
-    <div class="brand">Phone Lookup</div>
-    <div class="meta">Truecorp System</div>
+    <div class="brand">Made By Atom</div>
+    <div class="meta">Truecorp Operation</div>
 </div>
 <div class="container">
     <h1>ระบบค้นหาข้อมูลเบอร์โทรศัพท์</h1>
     <div class="tabs">
-        <div class="tab active">TrueCorp Lookup</div>
+        <div class="tab active">TrueCorp (Phone)</div>
     </div>
     <div class="grid">
         <div class="card">
             <div class="card-title">ค้นหาข้อมูลเบอร์โทรศัพท์</div>
-            <label>เบอร์โทรศัพท์ (10 หลัก)</label>
-            <input id="phone" type="tel" placeholder="0912345678" maxlength="10">
+            <label>เบอร์โทรศัพท์</label>
+            <input id="phone" type="tel" placeholder="0XXXXXXXXX" maxlength="10" onkeypress="return /[0-9]/.test(event.key)">
             <button class="search-btn" id="searchBtn" onclick="search()">ค้นหาข้อมูล</button>
         </div>
         <div class="card">
@@ -97,7 +97,9 @@ function search(){
     const searchBtn=document.getElementById('searchBtn')
     searchBtn.disabled=true
     searchBtn.textContent='กำลังค้นหา...'
-    fetch('/api/',{
+    
+    // ✅ เรียกผ่าน API ของเราใน Vercel
+    fetch('/api/phone',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({phone:phone})
@@ -121,7 +123,7 @@ function search(){
         console.error('Error:',error)
         document.getElementById('errorMessage').textContent=error.message
         showError()
-        showNotification('เกิดข้อผิดพลาด: ' + error.message,'error')
+        showNotification('เกิดข้อผิดพลาดในการค้นหา','error')
     })
     .finally(()=>{
         searchBtn.disabled=false
