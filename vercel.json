@@ -1,0 +1,19 @@
+{
+  "functions": {
+    "api/index.py": {
+      "runtime": "python3.9"
+    }
+  },
+  "rewrites": [
+    { "source": "/", "destination": "/api/index.py" },
+    { "source": "/api/(.*)", "destination": "/api/index.py" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Content-Type", "value": "text/html; charset=utf-8" }
+      ]
+    }
+  ]
+}
