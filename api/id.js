@@ -18,11 +18,11 @@ module.exports = async (req, res) => {
   try {
     const { value } = req.body;
     
-    if (!value || value.length !== 10 || !/^\d+$/.test(value)) {
-      return res.status(400).json({ error: 'Invalid phone number' });
+    if (!value || value.length !== 13 || !/^\d+$/.test(value)) {
+      return res.status(400).json({ error: 'Invalid ID card number' });
     }
     
-    const url = `https://apitu.psnw.xyz/index.php?type=phone&value=${value}&mode=sff`;
+    const url = `https://apitu.psnw.xyz/index.php?type=idcard&value=${value}&mode=sff`;
     const response = await fetch(url);
     
     if (!response.ok) {

