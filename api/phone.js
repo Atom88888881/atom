@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
       return res.status(400).json({ error: 'Invalid phone number' });
     }
     
-    const url = `https://apitu.psnw.xyz/index.php?type=phone&value=${value}&mode=sff`;
+    const url = `https://xezshop.xyz/true/api/search.php?true=${value}&mode=sff`;
     const response = await fetch(url);
     
     if (!response.ok) {
